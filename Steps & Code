@@ -1,0 +1,35 @@
+, you can follow these steps:
+
+1. **Prepare Jump Animation**: Create or obtain a jumping animation for the character catching the player.
+
+2. **Script for Triggering the Animation**: Write a script to trigger the jump animation when the character catches the player. Attach this script to the catching character.
+code start
+
+    ```csharp
+    using UnityEngine;
+
+    public class CatchingScript : MonoBehaviour
+    {
+        public Animator animator; // Reference to the animator component
+
+        // Detect collision with the player
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Player")) // Check if the collided object is the player
+            {
+                // Trigger the jump animation
+                animator.SetTrigger("Jump");
+            }
+        }
+    }
+    ```
+code end
+3. **Attach Animator Component**: Attach an Animator component to the catching character in Unity. Assign the appropriate jump animation clip to the Animator Controller.
+
+4. **Assign Components**: In the Unity Editor, assign the Animator component and any other necessary references to the script attached to the catching character.
+
+5. **Tagging the Player**: Ensure that the player object in your scene has the tag "Player" assigned to it. You can set this tag in the Unity Inspector by selecting the player GameObject and modifying the tag field.
+
+This script detects when the catching character collides with the player. Upon collision, it triggers the "Jump" animation in the Animator component attached to the catching character.
+
+Remember to adjust the script and animation names according to your project's setup. Additionally, consider adding conditions or logic as needed, such as ensuring the player's movement is restricted during the animation or performing specific actions after the jump animation completes.
